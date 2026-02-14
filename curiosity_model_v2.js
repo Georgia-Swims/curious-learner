@@ -153,12 +153,13 @@ function applyFeedback() {
 // ------------------------------------------------------
 function updateCuriosity() {
 
-  // If feedback is critical → nothing increases
-  if (feedbackType === "critical") {
-    curiosity -= 0.01;
-    curiosity = constrain(curiosity, 0, 1);
-    return;
-  }
+if (feedbackType === "critical") {
+  curiosity = lerp(curiosity, 0, 0.002); 
+  curiosity = constrain(curiosity, 0, 1);
+  return;
+}
+
+
 
   // If feedback is neutral → everything stays stable
   if (feedbackType === "neutral") {
